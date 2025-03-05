@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToolsProvider } from "./context/ToolsContext";
 import Index from "./pages/Index";
 import ToolDetail from "./pages/ToolDetail";
+import EditTool from "./pages/EditTool";
 import CompareTools from "./pages/CompareTools";
 import NotFound from "./pages/NotFound";
 
@@ -22,6 +22,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/tool/:id" element={<ToolDetail />} />
+            <Route path="/tool/:id/edit" element={<EditTool />} />
             <Route path="/compare" element={<CompareTools />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
