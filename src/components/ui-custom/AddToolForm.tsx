@@ -79,12 +79,21 @@ const AddToolForm = () => {
   };
 
   const onSubmit = (data: FormValues) => {
+    // Fix: Ensure all required properties for the Tool type are present and non-optional
     const newTool = {
       ...data,
       id: Date.now().toString(),
       tags,
       rating: 0,
       createdAt: new Date().toISOString(),
+      // Ensure all required properties are defined
+      name: data.name,
+      description: data.description,
+      url: data.url,
+      developer: data.developer,
+      category: data.category as "text" | "image" | "audio" | "video" | "multimodal" | "code" | "analytics" | "other",
+      pricing: data.pricing || "",
+      apiAccess: data.apiAccess || false,
     };
 
     addTool(newTool);

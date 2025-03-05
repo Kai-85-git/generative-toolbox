@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Filter, GridIcon, ListBullet, BarChart3, Search, X } from "lucide-react";
+import { Filter, GridIcon, List, BarChart3, Search, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -218,7 +218,7 @@ const Index = () => {
                     }`}
                     onClick={() => setViewMode("list")}
                   >
-                    <ListBullet className="h-4 w-4" />
+                    <List className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
