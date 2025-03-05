@@ -26,22 +26,22 @@ import {
 import { useTools } from "@/context/ToolsContext";
 
 const categories = [
-  { label: "Text", value: "text" },
-  { label: "Image", value: "image" },
-  { label: "Audio", value: "audio" },
-  { label: "Video", value: "video" },
-  { label: "Multimodal", value: "multimodal" },
-  { label: "Code", value: "code" },
-  { label: "Analytics", value: "analytics" },
-  { label: "Other", value: "other" },
+  { label: "テキスト", value: "text" },
+  { label: "画像", value: "image" },
+  { label: "音声", value: "audio" },
+  { label: "動画", value: "video" },
+  { label: "マルチモーダル", value: "multimodal" },
+  { label: "コード", value: "code" },
+  { label: "分析", value: "analytics" },
+  { label: "その他", value: "other" },
 ];
 
 const formSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  description: z.string().min(1, "Description is required"),
-  url: z.string().url("Must be a valid URL"),
-  developer: z.string().min(1, "Developer is required"),
-  category: z.string().min(1, "Category is required"),
+  name: z.string().min(1, "名前は必須です"),
+  description: z.string().min(1, "説明は必須です"),
+  url: z.string().url("有効なURLを入力してください"),
+  developer: z.string().min(1, "開発者は必須です"),
+  category: z.string().min(1, "カテゴリーは必須です"),
   pricing: z.string().optional(),
   apiAccess: z.boolean().optional(),
 });
@@ -99,8 +99,8 @@ const AddToolForm = () => {
     addTool(newTool);
 
     toast({
-      title: "Tool added successfully",
-      description: `${data.name} has been added to your collection.`,
+      title: "ツールが追加されました",
+      description: `${data.name}がコレクションに追加されました。`,
     });
 
     form.reset();
@@ -109,7 +109,7 @@ const AddToolForm = () => {
 
   return (
     <div className="py-4">
-      <h2 className="text-xl font-semibold mb-6">Add New AI Tool</h2>
+      <h2 className="text-xl font-semibold mb-6">新しいAIツールを追加</h2>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -119,9 +119,9 @@ const AddToolForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tool Name</FormLabel>
+                  <FormLabel>ツール名</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter tool name" {...field} />
+                    <Input placeholder="ツール名を入力" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -133,9 +133,9 @@ const AddToolForm = () => {
               name="developer"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Developer</FormLabel>
+                  <FormLabel>開発者</FormLabel>
                   <FormControl>
-                    <Input placeholder="Developer or company name" {...field} />
+                    <Input placeholder="開発者または会社名" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -148,10 +148,10 @@ const AddToolForm = () => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>説明</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Brief description of the tool"
+                    placeholder="ツールの簡単な説明"
                     className="resize-none"
                     {...field}
                   />
@@ -167,7 +167,7 @@ const AddToolForm = () => {
               name="url"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Website URL</FormLabel>
+                  <FormLabel>ウェブサイトURL</FormLabel>
                   <FormControl>
                     <Input placeholder="https://example.com" {...field} />
                   </FormControl>
@@ -181,14 +181,14 @@ const AddToolForm = () => {
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>カテゴリー</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select category" />
+                        <SelectValue placeholder="カテゴリーを選択" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -209,7 +209,7 @@ const AddToolForm = () => {
           </div>
 
           <div className="space-y-2">
-            <FormLabel>Tags</FormLabel>
+            <FormLabel>タグ</FormLabel>
             <div className="flex flex-wrap gap-1 mb-2">
               {tags.map((tag) => (
                 <div
@@ -231,7 +231,7 @@ const AddToolForm = () => {
               <Input
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
-                placeholder="Add tags"
+                placeholder="タグを追加"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
@@ -251,7 +251,7 @@ const AddToolForm = () => {
           </div>
 
           <div className="pt-2 flex justify-end">
-            <Button type="submit">Add Tool</Button>
+            <Button type="submit">ツールを追加</Button>
           </div>
         </form>
       </Form>

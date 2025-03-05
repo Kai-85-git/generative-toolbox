@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Filter, GridIcon, List, BarChart3, Search, X } from "lucide-react";
@@ -20,26 +19,26 @@ import Header from "@/components/layout/Header";
 import ToolCard from "@/components/ui-custom/ToolCard";
 
 const categories = [
-  { label: "All Categories", value: "" },
-  { label: "Text", value: "text" },
-  { label: "Image", value: "image" },
-  { label: "Audio", value: "audio" },
-  { label: "Video", value: "video" },
-  { label: "Multimodal", value: "multimodal" },
-  { label: "Code", value: "code" },
-  { label: "Analytics", value: "analytics" },
-  { label: "Other", value: "other" },
+  { label: "すべてのカテゴリー", value: "" },
+  { label: "テキスト", value: "text" },
+  { label: "画像", value: "image" },
+  { label: "音声", value: "audio" },
+  { label: "動画", value: "video" },
+  { label: "マルチモーダル", value: "multimodal" },
+  { label: "コード", value: "code" },
+  { label: "分析", value: "analytics" },
+  { label: "その他", value: "other" },
 ];
 
 type ViewMode = "grid" | "list";
 type SortOption = "nameAsc" | "nameDesc" | "dateDesc" | "dateAsc" | "ratingDesc";
 
 const sortOptions = [
-  { label: "Name (A-Z)", value: "nameAsc" },
-  { label: "Name (Z-A)", value: "nameDesc" },
-  { label: "Newest First", value: "dateDesc" },
-  { label: "Oldest First", value: "dateAsc" },
-  { label: "Rating (High to Low)", value: "ratingDesc" },
+  { label: "名前 (A-Z)", value: "nameAsc" },
+  { label: "名前 (Z-A)", value: "nameDesc" },
+  { label: "新しい順", value: "dateDesc" },
+  { label: "古い順", value: "dateAsc" },
+  { label: "評価 (高い順)", value: "ratingDesc" },
 ];
 
 const Index = () => {
@@ -102,10 +101,10 @@ const Index = () => {
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center mb-8">
               <div>
                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  AI Tools Collection
+                  AIツールコレクション
                 </h1>
                 <p className="mt-2 text-lg text-muted-foreground">
-                  Organize, discover and compare AI tools
+                  AIツールを整理、発見、比較する
                 </p>
               </div>
 
@@ -113,7 +112,7 @@ const Index = () => {
                 <Link to="/compare">
                   <Button className="gap-2">
                     <BarChart3 className="h-4 w-4" />
-                    Compare ({selectedTools.length})
+                    比較する ({selectedTools.length})
                   </Button>
                 </Link>
               )}
@@ -125,7 +124,7 @@ const Index = () => {
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="sm" className="gap-2">
                       <Filter className="h-4 w-4" />
-                      Category
+                      カテゴリー
                       {selectedCategory && (
                         <Badge variant="secondary" className="ml-1 font-normal">
                           {selectedCategory}
@@ -134,7 +133,7 @@ const Index = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
-                    <DropdownMenuLabel>Filter by Category</DropdownMenuLabel>
+                    <DropdownMenuLabel>カテゴリーで絞り込む</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
                       {categories.map((category) => (
@@ -157,11 +156,11 @@ const Index = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="sm" className="gap-2">
-                      Sort
+                      並び替え
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
-                    <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+                    <DropdownMenuLabel>並び替え</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
                       {sortOptions.map((option) => (
@@ -189,14 +188,14 @@ const Index = () => {
                     className="gap-2"
                   >
                     <X className="h-4 w-4" />
-                    Clear Filters
+                    フィルターをクリア
                   </Button>
                 )}
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="text-sm text-muted-foreground">
-                  {filteredTools.length} tools
+                  {filteredTools.length} ツール
                 </div>
 
                 <div className="flex items-center border rounded-md overflow-hidden">
@@ -227,22 +226,20 @@ const Index = () => {
             {filteredTools.length === 0 ? (
               <div className="rounded-lg border bg-card p-12 text-center">
                 <Search className="mx-auto h-8 w-8 text-muted-foreground" />
-                <h2 className="mt-4 text-xl font-semibold">No tools found</h2>
+                <h2 className="mt-4 text-xl font-semibold">ツールが見つかりません</h2>
                 <p className="mt-2 text-muted-foreground">
                   {searchQuery || selectedCategory ? (
                     <>
-                      No tools match your current filters. Try adjusting your search
-                      criteria.
+                      現在のフィルター条件に合うツールはありません。検索条件を調整してみてください。
                     </>
                   ) : (
                     <>
-                      You don't have any AI tools in your collection yet. Start by
-                      adding some tools.
+                      まだAIツールコレクションにツールがありません。ツールを追加してみましょう。
                     </>
                   )}
                 </p>
                 <Button className="mt-6" onClick={clearFilters}>
-                  Reset Filters
+                  フィルターをリセット
                 </Button>
               </div>
             ) : (
